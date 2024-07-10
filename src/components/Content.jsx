@@ -1,11 +1,15 @@
 import { useLoaderData } from "react-router-dom";
-import placeholderimage from "../assets/404.jpg"
+import placeholderimage from "../assets/404.jpg";
+import Markdown from 'react-markdown';
+import rehypeRaw from "rehype-raw";
+
 
 
 const Content = () => {
 
     const blog = useLoaderData()
-    const { cover_image, title, description, published_at, tags } = blog
+    const { cover_image, title, tags, body_html } = blog
+    console.log(blog)
 
     return (
         <div className="mx-auto group transition border-2 p-2  hover:no-underline focus:no-underline bg-gray-50">
@@ -16,7 +20,12 @@ const Content = () => {
                 }
 
             </div>
-            
+            <div className=" space-y-2 ">
+                <h3 className=" text-2xl font-semibold group-hover:underline group-focus:underline">{title}</h3>
+                <Markdown rehypePlugins={[rehypeRaw]}>{body_html}</Markdown>
+
+            </div>
+
         </div>
     );
 };
