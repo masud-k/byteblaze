@@ -16,7 +16,7 @@ export const saveBlog = blog => {
     const isExist = blogs.find(b => b.id === blog.id)
 
     if (isExist) {
-        toast.error("Blog already exists")
+       return toast.error("Blog already exists")
     }
 
     blogs.push(blog)
