@@ -19,7 +19,7 @@ const Bookmarks = () => {
         setBlogs(storedBlogs)
     }
 
-        if (blogs.length<1) return <EmptyState message={"No Bookmark available"}/>
+        if (blogs.length<1) return <EmptyState message='No Bookmark available!' address={'/blogs'} label={'Read Blogs'}/>
         
     
 
