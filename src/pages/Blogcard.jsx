@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import { MdDelete } from "react-icons/md";
 import placeholderimage from "../assets/404.jpg"
 
-const Blogcard = ({ blog, deletable }) => {
+const Blogcard = ({ blog, deletable, handleDelete }) => {
 
     const { cover_image, title, description, published_at, id } = blog
+    
 
     return (
-        <>
+        <div className='flex relative'>
         <Link to={`/blog/${id}`} className="max-w-7xl transition border-2 hover:scale-105 border-primary hover:border-secondary hover:no-underline focus:no-underline bg-gray-50">
             <img role="presentation" className="object-cover w-full rounded h-44 bg-gray-500" src={cover_image || placeholderimage} />
             <div className="p-6 space-y-2">
@@ -17,8 +18,8 @@ const Blogcard = ({ blog, deletable }) => {
                 <p className='text-black'>{description}</p>
             </div>
         </Link>
-        {deletable && <div className='absolute bg-primary p-3 ml-3 rounded-full hover:bg-secondary group cursor-pointer hover:scale-105 -right-4 '><MdDelete size={20} className='text-secondary group-hover:text-primary' /></div>}
-        </>
+        {deletable && <div onClick={()=> handleDelete(id)} className='absolute bg-primary p-3 ml-3 rounded-full hover:bg-secondary group cursor-pointer hover:scale-105 -right-5 -top-3 '><MdDelete size={20} className='text-secondary group-hover:text-primary' /></div>}
+        </div>
         
     );
 };
